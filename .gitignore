@@ -1,0 +1,8 @@
+# Ignore emacs backup files
+*~
+
+# Ignore the build results
+project/build/
+
+# Ignore the private apache access token
+project/.htpasswd

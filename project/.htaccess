@@ -1,0 +1,16 @@
+# Global UAC
+AuthName "Please authenticate."
+AuthType Basic
+AuthUserFile /var/www/html/.htpasswd
+Require valid-user
+
+# Disable directory browsing
+Options -Indexes
+
+# Prevent hotlinking
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^$ [NC]
+#example: RewriteCond %{HTTP_REFERER} !^https://(papyrus\.)aliceseaborn.dev/.*$ [NC]
+RewriteRule \.(gif|jpg|jpeg|bmp)$ - [F]
+
