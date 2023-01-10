@@ -25,5 +25,8 @@ clean: Makefile
 html:
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-all: clean update html
+refresh:
+	docker restart parchment
+
+all: clean update html refresh
 
