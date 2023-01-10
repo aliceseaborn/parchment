@@ -1,20 +1,18 @@
 version: "3"
 
-# uncomment for deployment
-# networks:
-#   nginx-proxy-manager_default:
-#     external: true
+networks:
+  nginx-proxy-manager_default:
+    external: true
 
 services:
   parchment:
     image: httpd:latest
     container_name: parchment
     restart: always
-    # uncomment for deployment
-    # networks:
-    #   - nginx-proxy-manager_default
+    networks:
+      - nginx-proxy-manager_default
     ports:
-      - "8000:80"
+      - "8580:80"
     volumes:
-      - ./build/html:/usr/local/apache2/htdocs/
+      - /opt/medusa/parchment/project/build/html:/usr/local/apache2/htdocs/
 
