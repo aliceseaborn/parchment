@@ -55,7 +55,7 @@ $ git remote show origin
 
 Lastly, the server must be configured to run the `Makefile` every hour. To achieve this task, we set up the following cron job. Note that the `make` command is instructed to change directory to the Parchment repo before commencing its make routine.
 ```
-0 * * * * make -C /opt/dev/parchment/project/ all
+0 * * * * make -C /opt/medusa/parchment/project/ all
 ```
 
 The server is now configured for Parchment deployment and will automatically update itself at the top of every hour in perpetuity.
