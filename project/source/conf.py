@@ -30,8 +30,8 @@ author = 'seaborn'
 # -- Site information --------------------------------------------------------
 
 html_title = "Parchment"
-html_logo = "/home/seaborn/development/parchment/project/source/_static/parchment-light.png"
-html_favicon = "/home/seaborn/development/parchment/project/source/_static/parchment.ico"
+html_logo = "/opt/medusa/parchment/project/source/_static/parchment-light.png"
+html_favicon = "/opt/medusa/parchment/project/source/_static/parchment.ico"
 
 
 # -- General configuration ---------------------------------------------------
