@@ -6,14 +6,14 @@ networks:
 
 services:
   parchment:
-    image: localhost/parchment:latest
+    image: parchment
     container_name: parchment
     restart: always
     networks:
       nginx-proxy-manager:
         ipv4_address: 172.18.2.4
     ports:
-      - "41100:80"
+      - "41000:80"
     volumes:
-      - /opt/medusa/parchment/project/build/html:/usr/local/apache2/htdocs/
+      - ./build/html:/usr/share/nginx/html
 

@@ -1,7 +1,3 @@
-FROM httpd:latest
-
-ARG TIMEZONE=Etc/UTC
-
-VOLUME ["/usr/local/apache2/htdocs"]
-EXPOSE 80
+FROM nginx:latest
+COPY build/html /usr/share/nginx/html
 
