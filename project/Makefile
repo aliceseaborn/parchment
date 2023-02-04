@@ -35,6 +35,12 @@ html:
 
 all: clean update html restart
 
+build:
+	sudo podman build \
+		--tag $(image) \
+		--label latest \
+		--file Containerfile
+
 run:
 	sudo podman run -d \
 		--name $(name) \
