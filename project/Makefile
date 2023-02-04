@@ -31,8 +31,9 @@ clean: Makefile
 
 html:
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	chown -R seaborn:seaborn build/
 
-all: clean update html refresh
+all: clean update html restart
 
 run:
 	sudo podman run -d \
