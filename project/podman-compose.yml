@@ -6,7 +6,7 @@ networks:
 
 services:
   parchment:
-    image: httpd:latest
+    image: localhost/parchment:latest
     container_name: parchment
     restart: always
     networks:
