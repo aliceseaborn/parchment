@@ -19,7 +19,7 @@ restart = always
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: help Makefile
+.PHONY: help Makefile build
 
 update:
 	cd /opt/medusa/parchment/
