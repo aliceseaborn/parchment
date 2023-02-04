@@ -22,6 +22,7 @@ help:
 .PHONY: help Makefile build
 
 update:
+	chown -R seaborn:seaborn /opt/medusa/parchment
 	cd /opt/medusa/parchment/
 	git fetch --all
 	git rebase -f origin/main
