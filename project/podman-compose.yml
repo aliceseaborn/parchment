@@ -1,7 +1,7 @@
 version: "3"
 
 networks:
-  nginx-proxy-manager_default:
+  nginx-proxy-manager:
     external: true
 
 services:
@@ -10,9 +10,10 @@ services:
     container_name: parchment
     restart: always
     networks:
-      - nginx-proxy-manager_default
+      nginx-proxy-manager:
+        ipv4_address: 172.18.2.4
     ports:
-      - "8580:80"
+      - "41100:80"
     volumes:
       - /opt/medusa/parchment/project/build/html:/usr/local/apache2/htdocs/
 

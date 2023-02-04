@@ -1,0 +1,7 @@
+FROM httpd:latest
+
+ARG TIMEZONE=Etc/UTC
+
+VOLUME ["/usr/local/apache2/htdocs"]
+EXPOSE 80
+

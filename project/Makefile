@@ -9,10 +9,18 @@ SOURCEDIR     = source
 BUILDDIR      = build
 PREFIX        = /opt/dev/parchment/project
 
+image = parchment
+name = parchment
+tag = latest
+ip = 172.18.2.4
+network = nginx-proxy-manager
+restart = always
+timezone = Etc/UTC
+
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: help Makefile
+.PHONY: help build Makefile
 
 update:
 	cd /opt/medusa/parchment/
@@ -25,8 +33,44 @@ clean: Makefile
 html:
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-refresh:
-	docker restart parchment
 
-all: clean update html refresh
+all: clean update html restart
+
+build:
+	sudo podman build \
+		--build-arg TIMEZONE=$(timezone) \
+		--tag "$(image):$(tag)" \
+		--file Containerfile
+
+export:
+	sudo rm "$(image).tar.gz" || true
+	sudo podman image save --output "$(image).tar.gz" "$(image):$(tag)"
+
+run:
+	sudo podman run -d \
+		--name $(name) \
+		--publish 41100:80 \
+		--ip=$(ip) \
+		--restart $(restart) \
+		--network=$(network) \
+		--volume /opt/medusa/parchment/project/build/html:/usr/local/apache2/htdocs/ \
+		$(args) $(image):$(tag)
+
+stop:
+	sudo podman stop $(name)
+
+restart:
+	sudo podman restart $(name)
+
+destroy:
+	sudo podman stop $(name)
+	sudo podman rm --force $(name)
+
+up:
+	sudo podman-compose \
+		--no-pod \
+		up -d
+
+down:
+	sudo podman-compose down
 
